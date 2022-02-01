@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="cont">
+        <div class="header">
+            <p>
+                <img src="/img/logo1.png" alt="">
+                <span>URL CUTTER</span>
+                <img src="/img/logo2.png" alt="">
+            </p>
+        </div>
+        <div class="form-cont">
+            <form autocomplete="off" action="/names" method="post">
+                <input type="text" required name="nameInp" id="nameInp" placeholder="Name">
+                <input type="url" required name="urlInp" id="urlInp" placeholder="Full Url">
+                <input type="submit" value="ADD">
+            </form>
+        </div>
+        <div class="table-cont">
+            <table>
+                <thead>
+                    <tr>
+                        <td class="sno">S.No</td>
+                        <td class="name">Name</td>
+                        <td class="url">URL</td>
+                        <td class="shorturl">Short URL</td>
+                        <td class="clicks">clicks</td>
+                        <td class="delete">Delete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% names.reverse().forEach((data,ind) => { %>
+                    <tr>
+                        <td class="sno"><%= ind+1 %></td>
+                        <td class="name"><%= data.name %></td>
+                        <td class="url"><%= data.url %> </td>
+                        <td class="shorturl"><a href="<%= data.shortid %>" target="_blank"><%= data.shortid %></a></td>
+                        <td class="clicks"><%= data.click %> </td>
+                        <td class="delete"><a href="<%= data.shortid %>/del"><i class="fa fa-trash"  style="font-size:18px;"></i></a></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <div class="empty">
+        </div>
+    </div>
+<!-- 
+    <script>
+        var atag=document.querySelectorAll('a')
+        atag.forEach((d)=>{
+            d.addEventListener('click',function(d){
+                d.preventDefault()
+                window.open(d.target.href,'_blank')
+                window.location.reload()
+            })
+        })
+    </script> -->
+</body>
+</html>
